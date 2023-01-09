@@ -6,6 +6,16 @@ from lists.models import Item
 
 # home_page = None
 def home_page(request):
+    
+    if request.method == 'POST':
+        Item.objects.create(text=request.POST['item_text'])
+        # return redirect('/')
+        return redirect('/lists/the-only-list-in-the-world/')
+
+    # items = Item.objects.all()
+    return render(request, 'home.html')
+    # return render(request, 'home.html', {'items': items})
+
     # return render(request, 'home.html')
 
     # if request.method == 'POST':
@@ -28,10 +38,11 @@ def home_page(request):
     #     'new_item_text': new_item_text, 
     # })
 
-    if request.method == 'POST':
-        Item.objects.create(text=request.POST['item_text'])
-        return redirect('/')
-
+  
+    
+def view_list(request):
+    # pass
     items = Item.objects.all()
-    # return render(request, 'home.html')
-    return render(request, 'home.html', {'items': items})
+    # return render(request, 'home.html', {'items': items})
+    return render(request, 'list.html', {'items': items})
+
