@@ -4,6 +4,7 @@ from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from django.test import LiveServerTestCase
+from selenium.webdriver.firefox.options import Options
 import time
 import unittest
 MAX_WAIT = 10
